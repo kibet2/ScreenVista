@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>{% block title %}ScreenRekod{% endblock %}</title>
+    <meta name="description" content="Capture, Share, Replay Your World">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="static/assets/bootstrap/css/bootstrap.min.css?h=4a137410e50fe91a22b09a0763454a44">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
+
+
+</head>
+
+<body>
+    <!-- Start: Navbar Centered Links -->
+    <nav class="navbar navbar-expand-md sticky-top py-3 navbar-dark" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/"><span>ScreenRekod</span></a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+                <span class="visually-hidden">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav mx-auto">
+                    {% if current_user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                        <li class="nav-item"><a class="btn btn-primary shadow me-2" href="/dashboard">Dashboard</a>
+                        <li class="nav-item"><a class="btn btn-success text-light me-2" href="/logout">Logout</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#Features" data-bs-target="#key features">Features</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#About">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#Testimonials">Testimonials</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">Log in</a></li>
+                        <li class="nav-item">
+                        <a class="btn btn-primary shadow" role="button" href="/register">Sign up</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav><!-- End: Navbar Centered Links -->
+
+    <!-- Start: Rendering flashed messages -->
+
+    {% from 'bootstrap5/utils.html' import render_messages %}
+
+    {{ render_messages(dismissible=true, dismiss_animate=true) }}
+
+    <!-- End: Rendering flashed messages -->
+
+    <!-- Content block for individual pages -->
+    <div class="container-fluid">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Start: Footer Multi Column -->
+    <footer class="bg-dark">
+        <div class="container py-4 py-lg-5">
+            
+            <hr>
+            <div class="text-muted d-flex justify-content-between align-items-center pt-3">
+                <p class="mb-0">Copyright © 2023 ScreenRekod</p>
+            </div>
+        </div>
+    </footer><!-- End: Footer Multi Column -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="static/assets/js/bold-and-dark.js?h=78569998362133b84a76614652f3624f"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{{ url_for('static', filename='js/platform.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+
+</html>
